@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use GrahamCampbell\Markdown\Facades\Markdown;
 
+
 class Post extends Model
 {
     protected $dates = ['published_at'];
@@ -42,6 +43,10 @@ class Post extends Model
 
     public function getExcerptHtmlAttribute($value){
         return $this->body ? Markdown::ConvertToHtml(e($this->excerpt)):NULL;
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 
 }
