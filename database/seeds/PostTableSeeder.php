@@ -34,7 +34,8 @@ class PostTableSeeder extends Seeder
                 'image' => rand(0,1)==1?$image:NULL,
                 'created_at' => clone($date),
                 'updated_at' => clone($date),
-                'published_at' => $j<5? $publishedDate:(rand(1,0)==0?NULL:$publishedDate->addDays(4) )
+                'published_at' => $j<5? $publishedDate:(rand(1,0)==0?NULL:$publishedDate->addDays(4) ),
+                'view_count' => rand(1,10)*10,
             ];
         }
 

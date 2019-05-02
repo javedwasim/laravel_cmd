@@ -49,4 +49,21 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function scopePopular($query){
+        return $query->orderBy('view_count','desc');
+    }
+
+    public function getThumbUrlAttribute($value){
+        $imageUrl = "";
+        if(! is_null($this->image)){
+            $ext = substr(strchr($this->image,'.'),1);
+            $thumbnail = str_replace(".{$ext}","_thumb.{$ext}",$this->image);
+            $imagePath = base_path()."/assets/img/".$thumbnail;
+            if(file_exists($imagePath)) {
+                $imageUrl= asset('assets/img/'.$thumbnail);
+            }
+        }
+        return $imageUrl;
+    }
+
 }
