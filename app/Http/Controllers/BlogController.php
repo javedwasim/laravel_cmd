@@ -12,32 +12,26 @@ class BlogController extends Controller
     protected $limit = 3;
 
     public function index(){
-
-        $categories = Category::with(['posts'=>function($query){
-                        $query->published();
-                      }])->orderBy('title','asc')->get();
         //\DB::enableQueryLog();
         $posts = Post::with('author')
                     ->LatestFirst()
                     ->published()
                     ->simplePaginate($this->limit);
          //view('blog.index',compact('posts'))->render();
-         return view('blog.index',compact('posts','categories'));
+         return view('blog.index',compact('posts'));
         //dd(\DB::getQueryLog());
     }
 
-    public function category($id)
+    public function category(Category $category)
     {
-        $categories = Category::with(['posts'=>function($query){
-                        $query->published();
-                      }])->orderBy('title', 'asc')->get();
+        $categoryName = $category->title;
 
-        $posts = Post::with('author')
-                    ->LatestFirst()
-                    ->published()
-                    ->where('category_id',$id)
-                    ->simplePaginate($this->limit);
-        return view('blog.index', compact('posts', 'categories'));
+        $posts = $category->posts()
+                          ->with('author')
+                          ->LatestFirst()
+                          ->published()
+                          ->simplePaginate($this->limit);
+        return view('blog.index', compact('posts', 'categoryName'));
     }
 
     public function show(Post $post){
