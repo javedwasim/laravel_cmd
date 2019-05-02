@@ -9,7 +9,13 @@ class BlogController extends Controller
 {
     protected $limit = 3;
     public function index(){
-        $posts = Post::with('author')->LatestFirst()->simplePaginate($this->limit);
-        return view('blog.index',compact('posts'));
+        //\DB::enableQueryLog();
+        $posts = Post::with('author')
+                    ->LatestFirst()
+                    ->published()
+                    ->simplePaginate($this->limit);
+         //view('blog.index',compact('posts'))->render();
+         return view('blog.index',compact('posts'));
+        //dd(\DB::getQueryLog());
     }
 }
