@@ -14,6 +14,12 @@
                         </div>
                     @endif
 
+                    @if(isset($authorName))
+                        <div class="alert alert-info">
+                            <p>Author: <strong>{{$authorName}}</strong></p>
+                        </div>
+                    @endif
+
                     @foreach($posts as $post)
                         <article class="post-item">
                             @if($post->image_url)
@@ -31,7 +37,7 @@
                                 <div class="post-meta padding-10 clearfix">
                                     <div class="pull-left">
                                         <ul class="post-meta-group">
-                                            <li><i class="fa fa-user"></i><a href="#"> {{$post->author->name}}</a></li>
+                                            <li><i class="fa fa-user"></i><a href="{{route('author',$post->author->slug)}}"> {{$post->author->name}}</a></li>
                                             <li><i class="fa fa-clock-o"></i>
                                                 <time> {{$post->date}}</time>
                                             </li>
