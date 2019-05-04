@@ -11,6 +11,10 @@
 |
 */
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/', [
     'uses'=>'BlogController@index',
     'as'=>'blog',
