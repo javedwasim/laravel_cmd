@@ -9,21 +9,37 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import VueRouter from 'vue-router'
+import { Form, HasError, AlertError } from 'vform';
+
+Window.Form = Form;
+Vue.component(HasError.name, HasError);
+Vue.component(AlertError.name, AlertError);
+
+import VueRouter from 'vue-router';
 
 Vue.use(VueRouter)
 
 const Foo = { template: '<div>foo</div>' }
 const Bar = { template: '<div>bar</div>' }
 
+import VueProgressBar from 'vue-progressbar'
+Vue.use(VueProgressBar, {
+    color: 'rgb(143, 255, 199)',
+    failedColor: 'red',
+    height: '3px'
+})
+
 let routes = [
     { path: '/dashboard', component: require('./components/dashboard.vue').default },
-    { path: '/profile', component: require('./components/profile.vue').default }
-]
+    { path: '/profile', component: require('./components/profile.vue').default },
+    { path: '/users', component: require('./components/users.vue').default },
+];
+
+window.Fire = new Vue();
 
 const router = new VueRouter({
     routes
-})
+});
 
 /**
  * The following block of code may be used to automatically register your
