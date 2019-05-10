@@ -14,6 +14,7 @@ import { Form, HasError, AlertError } from 'vform';
 Window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 import VueRouter from 'vue-router';
 
@@ -36,6 +37,7 @@ let routes = [
     { path: '/dashboard', component: require('./components/dashboard.vue').default },
     { path: '/profile', component: require('./components/profile.vue').default },
     { path: '/users', component: require('./components/users.vue').default },
+    { path: '/posts', component: require('./components/posts.vue').default },
 ];
 
 window.Fire = new Vue();

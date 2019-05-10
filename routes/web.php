@@ -34,3 +34,4 @@ Route::get('/author/{author}', [
     'uses'=>'BlogController@author',
     'as'=>'author',
 ]);
+
