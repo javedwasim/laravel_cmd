@@ -5,10 +5,22 @@ namespace App\Http\Controllers\Backend;
 use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostRequest;
 
 class BlogController extends Controller
 {
-    protected $limit = 5;
+    protected $limit = 10;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -26,9 +38,9 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Post $post)
     {
-        //
+        return view('admin.blog.create',compact('post'));
     }
 
     /**
@@ -37,9 +49,11 @@ class BlogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        $request->user()->posts()->create($request->all());
+
+        return redirect('admin/posts')->with('message','Your post created successfully');
     }
 
     /**

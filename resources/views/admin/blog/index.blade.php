@@ -25,6 +25,11 @@
                             <a href="{{route('posts.create')}}" class="btn btn-success">Add New</a>
                         </div>
                     </div>
+                    @if(session('message'))
+                        <div class="alert alert-success">
+                            {{session('message')}}
+                        </div>
+                    @endif
                     @if(! $posts->count())
                         <div class="alert alert-danger">
                             <strong>No Record Found</strong>

@@ -10,6 +10,8 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 class Post extends Model
 {
     protected $dates = ['published_at'];
+    protected $fillable = ['title','slug','excerpt','body','published_at','category_id'];
+
     public function getImageUrlAttribute($value){
         $imageUrl = "";
         if(! is_null($this->image)){
@@ -80,6 +82,10 @@ class Post extends Model
         }else{
             return '<span class="label label-success">Published</span>';
         }
+    }
+
+    public function setPublishedAtAttribute($value){
+        $this->attributes['published_at'] = $value ?:NULL;
     }
 
 }
