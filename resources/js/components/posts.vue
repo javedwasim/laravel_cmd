@@ -25,7 +25,9 @@
                 <td>{{post.id}}</td>
                 <td>{{post.author.name}}</td>
                 <td>{{post.category.title}}</td>
-                <td>{{post.created_at}}</td>
+                <td>
+                  <abbr title="">{{post.dateFormatted}}</abbr>
+                </td>
                 <td>
                   <a href="#" @click="editModal(user)"><i class="fa fa-edit"></i></a>
                   <a href="#" @click="deleteUser(user.id)"><i class="fa fa-trash"></i></a>

@@ -56,10 +56,12 @@
                     </a>
                     <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                            <router-link to="/posts" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>All Posts</p>
-                            </router-link>
+                            <a href="{{route('posts.index')}}" class="nav-link">
+                                <i class="nav-icon fa fa-th"></i>
+                                <p>All posts
+                                    <span class="right badge badge-danger">New</span>
+                                </p>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="pages/charts/flot.html" class="nav-link">

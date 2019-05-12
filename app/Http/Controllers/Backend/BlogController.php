@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 
 class BlogController extends Controller
 {
-    protected $limit = 10;
+    protected $limit = 5;
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +16,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return Post::with('author')->with('category')->paginate(5);
+        $posts = Post::latest()->with('category','author')->paginate($this->limit);
+        return view('admin.blog.index',compact('posts'));
     }
 
     /**

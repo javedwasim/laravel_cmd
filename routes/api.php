@@ -21,6 +21,6 @@ Route::apiResources([
     'user'=>'API\UserController'
 ]);
 
-Route::apiResources([
-    'post'=>'Backend\BlogController'
-]);
+//Route::apiResources([
+//    'post'=>'Backend\BlogController'
+//]);

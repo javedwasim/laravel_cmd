@@ -35,3 +35,4 @@ Route::get('/author/{author}', [
     'as'=>'author',
 ]);
 
+Route::resource('/admin/posts','Backend\BlogController');

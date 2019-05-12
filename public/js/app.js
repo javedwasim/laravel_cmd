@@ -1947,6 +1947,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -42895,7 +42897,11 @@ var render = function() {
                       _vm._v(" "),
                       _c("td", [_vm._v(_vm._s(post.category.title))]),
                       _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(post.created_at))]),
+                      _c("td", [
+                        _c("abbr", { attrs: { title: "" } }, [
+                          _vm._v(_vm._s(post.dateFormatted))
+                        ])
+                      ]),
                       _vm._v(" "),
                       _c("td", [
                         _c(

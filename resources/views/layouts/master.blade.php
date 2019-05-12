@@ -32,6 +32,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <router-view></router-view>
                 <vue-progress-bar></vue-progress-bar>
+                @yield('content')
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content -->
