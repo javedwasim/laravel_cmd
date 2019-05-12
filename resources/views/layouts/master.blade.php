@@ -53,5 +53,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- REQUIRED SCRIPTS -->
 <script src="{{$app->make('url')->to('/').'/public/js/app.js'}}"></script>
+@yield('script')
 </body>
 </html>

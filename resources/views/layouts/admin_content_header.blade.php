@@ -7,8 +7,15 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
+                    <li class="breadcrumb-item">
+                        <a href="{{url('/home')}}"><i class="nav-icon fas fa-tachometer-alt"></i> Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{{route('posts.index')}}">Blog</a></li>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        All Posts
+                    </li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
