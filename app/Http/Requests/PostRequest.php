@@ -25,10 +25,11 @@ class PostRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'slug' => 'required|unique:posts',
-            'body' => 'required',
+            'slug'  => 'required|unique:posts',
+            'body'  => 'required',
             // 'published_at' => 'date_format:Y-m-d',
             'category_id' => 'required',
+            'image' => 'mimes:jpg,jpeg,bmp,png',
         ];
     }
 }

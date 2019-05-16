@@ -10,7 +10,7 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 class Post extends Model
 {
     protected $dates = ['published_at'];
-    protected $fillable = ['title','slug','excerpt','body','published_at','category_id'];
+    protected $fillable = ['title','slug','excerpt','body','published_at','category_id','image'];
 
     public function getImageUrlAttribute($value){
         $imageUrl = "";

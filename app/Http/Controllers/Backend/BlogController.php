@@ -10,6 +10,7 @@ use App\Http\Requests\PostRequest;
 class BlogController extends Controller
 {
     protected $limit = 10;
+    protected $uploadPath;
 
     /**
      * Create a new controller instance.
@@ -19,6 +20,7 @@ class BlogController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->uploadPath = public_path('img');
     }
 
     /**
@@ -51,7 +53,8 @@ class BlogController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $request->user()->posts()->create($request->all());
+        $data = $this->handleRequest($request);
+        $request->user()->posts()->create($data);
 
         return redirect('admin/posts')->with('message','Your post created successfully');
     }
@@ -99,5 +102,22 @@ class BlogController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function handleRequest($request){
+       $data = $request->all();
+
+       if($request->hasFile('image')){
+           $image = $request->file('image');
+           $fileName = $image->getClientOriginalName();
+           $destination = $this->uploadPath;
+
+           $image->move($destination,$fileName);
+           $data['image'] = $fileName;
+       }
+
+       return $data;
+
+
     }
 }

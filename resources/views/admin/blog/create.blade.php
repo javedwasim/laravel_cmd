@@ -13,6 +13,7 @@
                     {!! Form::model($post,[
                         'method'=>'POST',
                         'route'=>'posts.store',
+                        'files'=>True,
                     ]) !!}
 
                     <div class="form-group {{$errors->has('title')?'has-error':''}}">
@@ -52,6 +53,16 @@
                             <span class="help-block" style="color: red">{{$errors->first('published_at')}}</span>
                         @endif
                     </div>
+
+                    <div class="form-group {{$errors->has('image')?'has-error':''}}">
+                        {!! Form::label('image','Feature Image') !!}
+                        {!! Form::file('image') !!}
+
+                        @if($errors->has('image'))
+                            <span class="help-block" style="color: red">{{$errors->first('image')}}</span>
+                        @endif
+                    </div>
+
                     <div class="form-group {{$errors->has('category_id')?'has-error':''}}">
                         {!! Form::label('category_id','Category') !!}
                         {!! Form::select('category_id',App\Category::pluck('title','id'),null,['class'=>'form-control','placeholder'=>'Choose Category']) !!}
