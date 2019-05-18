@@ -14,6 +14,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="stylesheet" href="{{$app->make('url')->to('/').'/public/css/app.css'}}">
+    <link rel="stylesheet" href="{{$app->make('url')->to('/').'/public/plugins/simplemde/simplemde.min.css'}}">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper" id="app">
@@ -53,6 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- REQUIRED SCRIPTS -->
 <script src="{{$app->make('url')->to('/').'/public/js/app.js'}}"></script>
+<script src="{{$app->make('url')->to('/').'/public/plugins/simplemde/simplemde.min.js'}}"></script>
 @yield('script')
 </body>
 </html>

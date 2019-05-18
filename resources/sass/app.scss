@@ -23,3 +23,17 @@ $fa-font-path:"../webfonts";
   background-color:#007bff !important;
   color:#FFF !important;
 }
+
+.form-group.body .CodeMirror {
+  height: 100px;
+  min-height: 130px;
+}
+
+.form-group.excerpt .CodeMirror {
+  height: 100px;
+  min-height: 130px;
+}
+
+.card-body.table-responsive.p-0 {
+  padding: 0 10px !important;
+}

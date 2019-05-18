@@ -32,12 +32,12 @@
                             <span class="help-block" style="color: red">{{$errors->first('slug')}}</span>
                         @endif
                     </div>
-                    <div class="form-group">
+                    <div class="form-group excerpt">
                         {!! Form::label('excerpt') !!}
                         {!! Form::text('excerpt',null,['class'=>'form-control']) !!}
                     </div>
 
-                    <div class="form-group {{$errors->has('body')?'has-error':''}}">
+                    <div class="form-group body {{$errors->has('body')?'has-error':''}}">
                         {!! Form::label('body') !!}
                         {!! Form::textarea('body',null,['class'=>'form-control']) !!}
 
@@ -87,5 +87,16 @@
 @section('script')
     <script type="text/javascript">
         $('ul.pagination').addClass('no-margin pagination-sm');
+        $('#title').on('blur',function () {
+           var theTitle = this.value.toLowerCase().trim(),
+            slugInout = $('#slug'),
+            theSlug = theTitle.replace(/&/g,'-and-')
+                              .replace(/[^a-z0-9-]+/g,'-')
+                              .replace(/\-\-+/g,'-')
+                              .replace(/^-+|-+$/g,'');
+           slugInout.val(theSlug);
+        });
+        var simplemde1 = new SimpleMDE({ element: $("#excerpt")[0] });
+        var simplemde2 = new SimpleMDE({ element: $("#body")[0] });
     </script>
 @endsection

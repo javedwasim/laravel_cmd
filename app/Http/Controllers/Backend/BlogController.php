@@ -6,6 +6,7 @@ use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
+use Intervention\Image\Facades\Image;
 
 class BlogController extends Controller
 {
@@ -20,7 +21,7 @@ class BlogController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->uploadPath = public_path('img');
+        $this->uploadPath = base_path()."/assets/".config('cms.image.directory').'/';
     }
 
     /**
@@ -108,11 +109,22 @@ class BlogController extends Controller
        $data = $request->all();
 
        if($request->hasFile('image')){
+
            $image = $request->file('image');
            $fileName = $image->getClientOriginalName();
            $destination = $this->uploadPath;
 
-           $image->move($destination,$fileName);
+           $successUploaded = $image->move($destination,$fileName);
+           if($successUploaded){
+               $extension = $image->getClientOriginalExtension();
+               $thumbnail = str_replace(".{$extension}","_thumb.{$extension}",$fileName);
+               $width = config('cms.image.thumbnail.width');
+               $height = config('cms.image.thumbnail.height');
+
+               Image::make($destination.'/'.$fileName)
+                   ->resize($width,$height)
+                   ->save($destination.'/'.$thumbnail);
+           }
            $data['image'] = $fileName;
        }
 

@@ -65,6 +65,7 @@ class Post extends Model
                 $imageUrl= asset('assets/img/'.$thumbnail);
             }
         }
+
         return $imageUrl;
     }
 
