@@ -109,7 +109,10 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return redirect('admin/posts')->with('trash-message',['Your post move to trash',$id]);
     }
 
     public function handleRequest($request){
@@ -138,5 +141,12 @@ class BlogController extends Controller
        return $data;
 
 
+    }
+
+    public function restore($id){
+        $post = Post::withTrashed()->findOrFail($id);
+        $post->restore();
+
+        return redirect('admin/posts')->with('trash-message',['Your post move from trash',$id]);
     }
 }

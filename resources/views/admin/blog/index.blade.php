@@ -25,11 +25,9 @@
                             <a href="{{route('posts.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Add New</a>
                         </div>
                     </div>
-                    @if(session('message'))
-                        <div class="alert alert-success">
-                            {{session('message')}}
-                        </div>
-                    @endif
+
+                   @include('admin.blog.message')
+
                     @if(! $posts->count())
                         <div class="alert alert-danger">
                             <strong>No Record Found</strong>
@@ -47,12 +45,14 @@
                             @foreach($posts as $post)
                                 <tr>
                                     <td>
+                                        {!! Form::open(['method'=>'Delete','route'=>['posts.destroy',$post->id]]) !!}
                                         <a href="{{route('posts.edit',$post->id)}}" class="btn btn-xs btn-default">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <a href="{{route('posts.destroy',$post->id)}}" class="btn btn-xs btn-danger">
+                                        <button type="submit" class="btn btn-xs btn-danger">
                                             <i class="fa fa-trash"></i>
-                                        </a>
+                                        </button>
+                                        {!! Form::close() !!}
                                     </td>
                                     <td>{{$post->title}}</td>
                                     <td>{{$post->author->name}}</td>

@@ -43,4 +43,11 @@ Route::get('admin/posts/{id}/edit','Backend\BlogController@edit' );
 
 Route::put('admin/posts/{id}','Backend\BlogController@update' );
 
+Route::delete('admin/posts/{id}','Backend\BlogController@destroy' );
+
+Route::put('post/restore/{id}', [
+    'uses'=>'Backend\BlogController@restore',
+    'as'=>'post.restore',
+]);
+
 Route::resource('/admin/posts','Backend\BlogController');
