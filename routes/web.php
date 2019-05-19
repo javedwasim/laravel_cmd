@@ -35,4 +35,12 @@ Route::get('/author/{author}', [
     'as'=>'author',
 ]);
 
+Route::get('admin/posts/create','Backend\BlogController@create' );
+
+Route::get('admin/posts/{id}','Backend\BlogController@show' );
+
+Route::get('admin/posts/{id}/edit','Backend\BlogController@edit' );
+
+Route::put('admin/posts/{id}','Backend\BlogController@update' );
+
 Route::resource('/admin/posts','Backend\BlogController');

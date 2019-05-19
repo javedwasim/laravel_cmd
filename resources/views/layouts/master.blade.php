@@ -12,9 +12,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>My | Blog</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <link rel="stylesheet" href="{{$app->make('url')->to('/').'/public/css/app.css'}}">
     <link rel="stylesheet" href="{{$app->make('url')->to('/').'/public/plugins/simplemde/simplemde.min.css'}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper" id="app">
@@ -55,6 +57,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 <script src="{{$app->make('url')->to('/').'/public/js/app.js'}}"></script>
 <script src="{{$app->make('url')->to('/').'/public/plugins/simplemde/simplemde.min.js'}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
 @yield('script')
 </body>
 </html>

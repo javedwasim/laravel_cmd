@@ -37,3 +37,7 @@ $fa-font-path:"../webfonts";
 .card-body.table-responsive.p-0 {
   padding: 0 10px !important;
 }
+
+select.form-control:not([size]):not([multiple]) {
+  height: calc(3.25rem + 2px);
+}

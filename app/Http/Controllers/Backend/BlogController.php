@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use Intervention\Image\Facades\Image;
 
+
 class BlogController extends Controller
 {
     protected $limit = 10;
@@ -68,7 +69,7 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -79,7 +80,9 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        return view('admin.blog.edit',compact('post'));
     }
 
     /**
@@ -89,9 +92,13 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function  update(PostRequest $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $data = $this->handleRequest($request);
+        $post->update($data);
+
+        return redirect('admin/posts')->with('message','Your post updated successfully');
     }
 
     /**

@@ -29619,3 +29619,7 @@ readers do not read off random characters that represent icons */
   padding: 0 10px !important;
 }
 
+select.form-control:not([size]):not([multiple]) {
+  height: calc(3.25rem + 2px);
+}
+

@@ -22,7 +22,7 @@
                 <div class="card-body table-responsive p-0">
                     <div class="card-header">
                         <div class="pull-left">
-                            <a href="{{route('posts.create')}}" class="btn btn-success">Add New</a>
+                            <a href="{{route('posts.create')}}" class="btn btn-success"><i class="fa fa-plus"></i> Add New</a>
                         </div>
                     </div>
                     @if(session('message'))
@@ -46,7 +46,7 @@
                             </tr>
                             @foreach($posts as $post)
                                 <tr>
-                                    <td style="wi">
+                                    <td>
                                         <a href="{{route('posts.edit',$post->id)}}" class="btn btn-xs btn-default">
                                             <i class="fa fa-edit"></i>
                                         </a>
