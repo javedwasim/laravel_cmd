@@ -42,12 +42,13 @@ class BlogController extends Controller
 
     public function author(User $author){
         $authorName = $author->name;
-
+        //\DB::enableQueryLog();
         $posts = $author->posts()
                     ->with('category')
                     ->LatestFirst()
                     ->published()
                     ->simplePaginate($this->limit);
+        //dd(\DB::getQueryLog());
         return view('blog.index', compact('posts', 'authorName'));
     }
 }

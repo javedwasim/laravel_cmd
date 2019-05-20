@@ -78,6 +78,12 @@
                     </ul>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('users.index')}}" class="nav-link">
+                        <i class="nav-icon fa fa-user"></i>
+                        <p>Users</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="nav-icon fa fa-power-off red"></i>

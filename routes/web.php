@@ -57,3 +57,9 @@ Route::delete('post/force-destroy/{id}', [
 
 Route::resource('/admin/posts','Backend\BlogController');
 Route::resource('/admin/categories','Backend\CategoryController');
+Route::resource('/admin/users','Backend\UserController');
+
+Route::get('admin/users/confirm/{user}', [
+    'uses'=>'Backend\UserController@confirm',
+    'as'=>'admin.users.confirm',
+]);
