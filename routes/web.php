@@ -56,3 +56,4 @@ Route::delete('post/force-destroy/{id}', [
 ]);
 
 Route::resource('/admin/posts','Backend\BlogController');
+Route::resource('/admin/categories','Backend\CategoryController');
