@@ -22,6 +22,7 @@ class BlogController extends BackendController
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('check-permissions');
         $this->uploadPath = base_path()."/assets/".config('cms.image.directory').'/';
     }
 

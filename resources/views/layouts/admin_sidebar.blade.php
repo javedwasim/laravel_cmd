@@ -32,20 +32,24 @@
                     </router-link>
 
                 </li>
-                <li class="nav-item">
-                    <router-link to="/profile" class="nav-link">
-                        <i class="nav-icon fa fa-th"></i>
-                        <p>Profile
-                            <span class="right badge badge-danger">New</span>
-                        </p>
-                    </router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link to="/users" class="nav-link">
-                        <i class="nav-icon fa fa-user"></i>
-                        <p>Users</p>
-                    </router-link>
-                </li>
+                @role(['admin','editor'])
+                    <li class="nav-item">
+                        <router-link to="/profile" class="nav-link">
+                            <i class="nav-icon fa fa-th"></i>
+                            <p>Profile
+                                <span class="right badge badge-danger">New</span>
+                            </p>
+                        </router-link>
+                    </li>
+                @endrole
+                @role(['admin','editor'])
+                    <li class="nav-item">
+                        <router-link to="/users" class="nav-link">
+                            <i class="nav-icon fa fa-user"></i>
+                            <p>Users</p>
+                        </router-link>
+                    </li>
+                @endrole
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-chart-pie"></i>
@@ -63,26 +67,25 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="pages/charts/flot.html" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Add New</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('categories.index')}}" class="nav-link">
-                                <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Categories</p>
-                            </a>
-                        </li>
+
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="{{route('users.index')}}" class="nav-link">
-                        <i class="nav-icon fa fa-user"></i>
-                        <p>Users</p>
-                    </a>
-                </li>
+                @role(['admin','editor'])
+                    <li class="nav-item">
+                        <a href="{{route('categories.index')}}" class="nav-link">
+                            <i class="fa fa-circle"></i>
+                            <p>Categories</p>
+                        </a>
+                    </li>
+                @endrole
+                @role('admin')
+                    <li class="nav-item">
+                        <a href="{{route('users.index')}}" class="nav-link">
+                            <i class="nav-icon fa fa-user"></i>
+                            <p>Users</p>
+                        </a>
+                    </li>
+                @endrole
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
