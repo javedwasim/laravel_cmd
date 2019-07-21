@@ -15,6 +15,7 @@
             </div>
             <div class="info">
                 <a href="#" class="d-block">{{Auth::user()->name}}</a>
+                <a href="#" class="d-block">{{Auth::user()->roles->first()->display_name}}</a>
             </div>
         </div>
 

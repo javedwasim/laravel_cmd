@@ -45,12 +45,13 @@ class UserController extends BackendController
      */
     public function store(UserStoreRequest $request)
     {
-        User::create([
-            'name'=>$request['name'],
-            'email'=>$request['email'],
-            'bio'=>$request['bio'],
-            'password'=>Hash::make($request['password']),
-        ]);
+       $user =  User::create([
+                    'name'=>$request['name'],
+                    'email'=>$request['email'],
+                    'bio'=>$request['bio'],
+                    'password'=>Hash::make($request['password']),
+                ]);
+        $user->attachRole($request['role']);
 
         return redirect('admin/users')->with('message',"New user has been created.");
     }
@@ -94,6 +95,9 @@ class UserController extends BackendController
        $user->bio = $request['bio'];
        $user->password = Hash::make($request['password']);
        $user->save();
+
+        $user->detachRoles();
+        $user->attachRole($request['role']);
 
         return redirect('admin/users')->with('message',"User has been updated.");
     }
