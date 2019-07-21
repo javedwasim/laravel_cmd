@@ -13,6 +13,14 @@
                     <span class="help-block" style="color: red">{{$errors->first('name')}}</span>
                 @endif
             </div>
+            <div class="form-group {{$errors->has('slug')?'has-error':''}}">
+                {!! Form::label('slug') !!}
+                {!! Form::text('slug',null,['class'=>'form-control']) !!}
+
+                @if($errors->has('slug'))
+                    <span class="help-block" style="color: red">{{$errors->first('slug')}}</span>
+                @endif
+            </div>
             <div class="form-group {{$errors->has('email')?'has-error':''}}">
                 {!! Form::label('email') !!}
                 {!! Form::text('email',null,['class'=>'form-control']) !!}
@@ -23,7 +31,7 @@
             </div>
             <div class="form-group {{$errors->has('bio')?'has-error':''}}">
                 {!! Form::label('bio') !!}
-                {!! Form::textarea('bio',null,['class'=>'form-control']) !!}
+                {!! Form::textarea('bio',null,['class'=>'form-control','rows'=>5]) !!}
 
                 @if($errors->has('bio'))
                     <span class="help-block" style="color: red">{{$errors->first('bio')}}</span>
@@ -54,7 +62,7 @@
                     {!! Form::select('role',App\Role::pluck('display_name','id'),$user->exists ? $user->roles->first()->id:null, ['class'=>'form-control','placeholder'=>'Select a role']) !!}
                 @endif
                 @if($errors->has('password_confirmation'))
-                    <span class="help-block" style="color: red">{{$errors->first('password_confirmation')}}</span>
+                    <span class="help-block" style="color: red">{{$errors->first('role')}}</span>
                 @endif
             </div>
         </div>

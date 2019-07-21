@@ -49,6 +49,7 @@ class UserController extends BackendController
                     'name'=>$request['name'],
                     'email'=>$request['email'],
                     'bio'=>$request['bio'],
+                    'slug'=>$request['slug'],
                     'password'=>Hash::make($request['password']),
                 ]);
         $user->attachRole($request['role']);
@@ -93,6 +94,7 @@ class UserController extends BackendController
        $user->name = $request['name'];
        $user->email = $request['email'];
        $user->bio = $request['bio'];
+       $user->slug = $request['slug'];
        $user->password = Hash::make($request['password']);
        $user->save();
 
